@@ -1,0 +1,110 @@
+@import '/home/dion/.cache/wal/colors.scss';
+
+*{
+    all: unset;
+    font-family: 'Fira Code';
+    font-weight: 700;
+}
+
+.container {
+    background-color: $background;
+    border-radius: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: 12px;
+    margin-right: 12px;
+    
+}
+
+.infotext {
+    background-color: $color2;
+    font-size: 12px;
+    margin: 12px 0px 12px 0px;
+    padding: 0px 7.5px 0px 7.5px;
+    border-radius: 6px;
+}
+
+.wsindic {
+    font-size: 12px;
+    margin: 12px 5px 12px 5px;
+    padding: 0px 7.5px 0px 7.5px;
+    border-radius: 6px;
+    min-width: 3px;
+}
+
+.ctrl {
+    font-size: 22.5px;
+    padding: 4.5px 0px 0px 4.5px;
+    border-radius: 4.5px;
+    min-width: 3px;
+
+    &:hover {
+        transition: 200ms linear;
+    }
+}
+
+.sep {
+    font-size: 30px;
+    color: $color3;
+    margin-left: 4.5px;
+    margin-right: 4.5px;
+}
+
+.icon-sep {
+    font-size: 15px;
+    font-family: 'Font Awesome 6 Free Solid';
+    color: $color3;
+    margin-left: 4.5px;
+    margin-right: 4.5px;
+    padding-top: 3px;
+}
+
+.checkbox {
+    transition: 200ms linear;
+    border: 2px solid $color3;
+    margin: 12px 4.5px 12px 4.5px;
+    padding: 0px 4.5px 0px 4.5px;
+    border-radius: 6px;
+    font-size: 12px;
+    min-width: 12px;
+
+    &:checked {
+        transition: 200ms linear;
+        background-color: $color3;
+        color: $color3;
+    }
+    &:hover {
+        transition: 200ms linear;
+        background-color: $color2;
+        color: $color2;
+    }
+}
+
+.invcheckbox {
+    transition: 200ms linear;
+    border: 2px solid $color3;
+    margin: 12px 4.5px 12px 4.5px;
+    padding: 0px 4.5px 0px 4.5px;
+    border-radius: 6px;
+    font-size: 12px;
+    min-width: 12px;
+    background-color: $color3;
+    color: $color3;
+
+    &:checked {
+        transition: 200ms linear;
+        background-color: $background;
+        color: $background;
+    }
+    &:hover {
+        transition: 200ms linear;
+        background-color: $color2;
+        color: $color2;
+    }
+}
+
+.buttontext {
+    color: $color3;
+    padding-top: 1.5px;
+    font-size: 10px;
+}

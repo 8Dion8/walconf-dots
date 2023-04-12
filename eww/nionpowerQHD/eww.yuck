@@ -1,0 +1,305 @@
+(defpoll HOUR  :interval "5s"    `date +%H`    )
+(defpoll MINT  :interval "5s"    `date +%M`    )
+(defpoll DAY   :interval "15s"   `date +%d`    )
+(defpoll WEEKD :interval "15s"   `date +%A`    )
+(defpoll MONTH :interval "15s"   `date +%b`    )
+
+(defpoll MART  :interval "2s"    `scripts/music.sh --art`)
+(defpoll MNAME :interval "2s"    `scripts/music.sh --name`)
+(defpoll MTITLE :interval "2s"    `scripts/music.sh --title`)
+
+(defpoll WEATHER :interval "1800s" `scripts/weather.sh`)
+
+(defpoll CPUTEMP :interval "1s" `scripts/cpu.sh --temp`)
+(defpoll CPUUSAGE :interval "1s" `scripts/cpu.sh --usage`)
+(defpoll CPUCLOCK :interval "1s" `scripts/cpu.sh --clock`)
+(defpoll CPUFAN :interval "1s" `scripts/cpu.sh --fan`)
+
+
+(defpoll GPUTEMP :interval "1s" `scripts/gpu.sh --temp`)
+(defpoll GPUUSAGE :interval "1s" `scripts/gpu.sh --usage`)
+(defpoll GPUCLOCK :interval "1s" `scripts/gpu.sh --clock`)
+(defpoll GPUMEM :interval "1s" `scripts/gpu.sh --mem`)
+(defpoll GPUWATT :interval "1s" `scripts/gpu.sh --watt`)
+(defpoll GPUFAN :interval "1s" `scripts/gpu.sh --fan`)
+
+(defpoll RAM :interval "2s" `scripts/misc.sh --ram`)
+(defpoll BAT :interval "5s" `scripts/misc.sh --bat`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+(defwidget grt []
+    (box :orientation "v" :class "container" :space-evenly "false"
+        (box  :class "h3" "Good Afternoon")
+        (box :class "user" "dion")))
+
+(defwidget cpu []
+    (box :orientation "v" :class "container" :space-evenly "false"
+        (label :class "monitor-title" :text "CPU")
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value CPUTEMP :min 40 :max 100 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+            (label :class "progress-text" :text "${CPUTEMP}°C")
+            )
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon-cpu" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value CPUUSAGE :min 0 :max 100 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+                (label :class "progress-text" :text "${CPUUSAGE}%")
+            )
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon-cpu" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value CPUCLOCK :min 0.8 :max 5.2 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+            (label :class "progress-text" :text "${CPUCLOCK}GHz")
+            
+            )))
+
+(defwidget gpu []
+    (box :orientation "v" :class "container" :space-evenly "false"
+        (label :class "monitor-title" :text "GPU")
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value GPUTEMP :min 40 :max 100 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+            (label :class "progress-text" :text "${GPUTEMP}°C")
+            )
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon-cpu" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value GPUUSAGE :min 0 :max 100 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+                (label :class "progress-text" :text "${GPUUSAGE}%")
+            )
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon-cpu" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value GPUCLOCK :min 100 :max 1800 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+            (label :class "progress-text" :text "${GPUCLOCK}mHz")
+            
+            )
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon-cpu" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value GPUMEM :min 0 :max 7000 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+            (label :class "progress-text" :text "${GPUMEM}mHz")
+            
+            )
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon-cpu" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value GPUWATT :min 10 :max 90 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+            (label :class "progress-text" :text "${GPUWATT}W")
+            
+            )))
+
+(defwidget misc []
+    (box :orientation "v" :class "container" :space-evenly "false"
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon-cpu" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value CPUFAN :min 0 :max 6400 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+            (label :class "progress-text" :text "${CPUFAN}RPM")
+            )
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon-cpu" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value GPUFAN :min 0 :max 6400 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+                (label :class "progress-text" :text "${GPUFAN}RPM")
+            )
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon-cpu" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value RAM :min 0 :max 15 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+            (label :class "progress-text" :text "${RAM}GiB")
+            
+            )
+        (box :orientation "h" :space-evenly "false" :class "bar"
+            (label :class "progress-icon-cpu" :text "")
+            (box :orientation "v"
+                (box :class "prog-sep")
+                (scale :class "progress" :value BAT :min 0 :max 100 :orientation "h" :active "false")
+                (box :class "prog-sep"))
+            (label :class "progress-text" :text "${BAT}%")
+            
+            )))
+
+
+(defwidget clndr []
+    (box :orientation "v" :class "container" :space-evenly "false"
+        (box :class "h1" DAY)
+        (box :class "h4" MONTH)))
+
+(defwidget tm []
+    (box :orientation "v" :class "container" :space-evenly "false"
+        (box :orientation "h" :space-evenly "false"
+            (box :class "h1 time hour" HOUR)
+            (box :class "h1 time minute" MINT))
+        (box :orientation "h" :class "h4" WEEKD)))
+
+(defwidget wthr []
+    (box :orientation "h" :class "container"
+        (box :orientation "v" 
+            (label :class "weather-icon" :text ""))
+        (box :orientation "v" :space-evenly "false"
+            (label :class "h1" :text WEATHER)
+            (label :class "h4" :text "Moscow"))))
+
+(defwidget mctrl []
+    (box :orientation "v" :class "container" :space-evenly "false"
+        (label :class "mtitle" :text MTITLE)
+        (label :class "mtitle" :text MNAME)
+        (box :orientation "h"
+            (label :class "mbutton" :text "")
+            (label :class "mbutton" :text "")
+            (label :class "mbutton" :text ""))))
+
+(defwidget mart []
+    (box :orientation "h" :class "mart" :style "background-image: url('${MART}');"))
+
+(defwidget gb []
+    (box :orientation "v" :class "container" :space-evenly "false"
+        (box :orientation "h" :space-evenly "false"
+            (button :class "gbbutton-left" :onclick "shutdown now" "")
+            (button :class "gbbutton" :onclick "reboot" "")
+            (button :class "gbbutton-right" :onclick "./closeall.sh" ""))
+        (label :class "h4" :text "is this really goodbye?")))
+
+
+(defwindow greet
+    :monitor 0
+    :geometry (geometry :x "16px"
+                        :y "96px"
+                        :width  "640px"
+                        :height "240px")
+    :stacking "fg"
+    :reserve (struts :distance "-360px" :side "left")
+        (grt))
+
+
+
+(defwindow calendar
+    :monitor 0
+    :geometry (geometry :x "16px"
+                        :y "352px"
+                        :width "240px"
+                        :height "240px")
+    :stacking "fg"
+    :wm-ignore true
+        (clndr))
+
+(defwindow time
+    :monitor 0
+    :geometry (geometry :x "272px"
+                        :y "352px"
+                        :width "384px"
+                        :height "240px")
+    :stacking "fg"
+    :wm-ignore true
+        (tm))
+
+(defwindow weather
+    :monitor 0
+    :geometry (geometry :x "16px"
+                        :y "608px"
+                        :width "640px"
+                        :height "240px")
+    :stacking "fg"
+    :wm-ignore true
+        (wthr))
+
+(defwindow music-control
+    :monitor 0
+    :geometry (geometry :x "16px"
+                        :y "864px"
+                        :width "384px"
+                        :height "240px")
+    :stacking "fg"
+    :wm-ignore true
+        (mctrl))
+
+(defwindow music-art
+    :monitor 0
+    :geometry (geometry :x "416px"
+                        :y "864px"
+                        :width "240px"
+                        :height "240px")
+    :stacking "fg"
+    :wm-ignore true
+        (mart))
+
+(defwindow goodbye
+    :monitor 0
+    :geometry (geometry :x "16px"
+                        :y "1120px"
+                        :width "640px"
+                        :height "304px")
+    :stacking "fg"
+    :wm-ignore true
+        (gb))
+
+
+
+(defwindow cpuwin
+    :monitor 0
+    :geometry (geometry :x "1904px"
+                        :y "96px"
+                        :width "640px"
+                        :height "272px")
+    :stacking "fg"
+    :reserve (struts :distance "-1260px" :side "right")
+        (cpu))
+
+(defwindow gpuwin
+    :monitor 0
+    :geometry (geometry :x "1904px"
+                        :y "384px"
+                        :width "640px"
+                        :height "400px")
+    :stacking "fg"
+    :wm_ignore true
+        (gpu))
+            
+(defwindow miscwin
+    :monitor 0
+    :geometry (geometry :x "1904px"
+                        :y "800px"
+                        :width "640px"
+                        :height "280px")
+    :stacking "fg"
+    :wm_ignore true
+        (misc))
+                        
+                               

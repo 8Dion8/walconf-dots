@@ -1,0 +1,154 @@
+@import '/home/dion/.cache/wal/colors.scss';
+
+*{
+    all: unset;
+    font-family: 'Fira Code';
+    font-weight: 500;
+}
+
+.container {
+    background-color: $background;
+}
+
+.h2 {
+    color: $color2;
+    font-size: 64px;
+    padding-top: 32px;
+    padding-bottom: 16px;
+}
+
+.user {
+    color: $color4;
+    font-size: 64px;
+    padding-top: 32px;
+}
+
+
+.h1 {
+    color: $color1;
+    font-size: 112px;
+    padding-top: 32px;
+    padding-bottom: 0px;
+}
+
+.h3 {
+    color: $color3;
+    font-size: 48px;
+    padding-top: 32px;
+    padding-bottom: 0px;
+}
+
+.h4 {
+    color: $color4;
+    font-size: 32px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.time {
+    padding-left: 36px;
+}
+
+.hour {
+    color: $color2;
+}
+
+.minute {
+    color: $color3;
+}
+
+.weather-icon {
+    color: $color2;
+    font-family: "Font Awesome 6 Free";
+    font-size: 144px;
+}
+
+.mbutton {
+    color: $color2;
+    font-family: "Font Awesome 6 Free";
+    padding-top: 32px;
+    font-size: 32px;
+}
+
+.mtitle {
+    color: $color4;
+    font-size: 32px;
+    padding-top: 32px;
+    padding-bottom: 0px;
+}
+
+.mart {
+    background-size: 240px;
+    min-width: 240px;
+    min-height: 240px;
+}
+
+.gbbutton, .gbbutton-left, .gbbutton-right {
+    color: $color3;
+    font-size: 112px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+
+}
+
+.gbbutton {
+    margin-left: 80px;
+    margin-right: 80px;
+    
+}
+
+.gbbutton-left {
+    margin-left: 136px;
+}
+
+.monitor-title {
+    color: $color3;
+    font-size: 32px;
+    padding-top: 24px;
+    padding-bottom: 0px;
+}
+
+.progress-icon {
+    font-family: "Font Awesome 6 Free";
+    font-size: 32px;
+    color: $color3;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+.progress-icon-cpu {
+    font-family: "Font Awesome 6 Free";
+    font-size: 28px;
+    color: $color3;
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+
+.progress, scale trough {
+    all: unset;
+    background-color: rgba($background, 0.8);
+    min-height: 16px;
+    min-width: 416px;  
+    border-radius: 16px;
+}
+
+.progress, scale trough highlight {
+    all: unset;
+    border-radius: 16px;
+    min-height: 16px;
+    background-color: $color2;
+}
+
+.progress slider {
+    all: unset;
+    color: $background;
+}
+
+.bar {
+    margin-top: 16px;
+}
+
+.progress-text {
+    color: $color1;
+    margin-left: 24px;
+}

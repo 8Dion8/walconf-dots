@@ -1,0 +1,92 @@
+(defvar SEP "•")
+
+
+(defpoll TIME :interval "1s"    `date +%H:%M:%S`    )
+(defpoll WIFI :interval "1s"    `scripts/network.sh`)
+(defpoll VOL  :interval "0.1s" `scripts/volume.sh` )
+(defpoll BAT  :interval "1s"    `scripts/battery.sh`)
+(defpoll BCKL :interval "0.1s" `scripts/backlight.sh`)
+(defpoll MSIC :interval "1s"    `scripts/music.sh`)
+
+(defpoll WSTLA :interval "0.1s" `scripts/workspaces.sh --one`)
+(defpoll WSTLB :interval "0.1s" `scripts/workspaces.sh --two`)
+(defpoll WSTLC :interval "0.1s" `scripts/workspaces.sh --three`)
+(defpoll WSTLD :interval "0.1s" `scripts/workspaces.sh --four`)
+(defpoll WSTLE :interval "0.1s" `scripts/workspaces.sh --five`)
+
+(defpoll CPU :interval "1s" `scripts/sys-info.sh --cpu`)
+(defpoll RAM :interval "1s" `scripts/sys-info.sh --ram`)
+(defpoll GPU :interval "1s" `scripts/sys-info.sh --gpu`)
+(defpoll CPUTEMP :interval "1s" `scripts/temp-info.sh --cpu`)
+(defpoll GPUTEMP :interval "1s" `scripts/temp-info.sh --gpu`)
+
+(defpoll CONTAINERCOLOR :interval "1s" `scripts/theme.sh --container`)
+(defpoll INFOTEXTCOLOR  :interval "1s" `scripts/theme.sh --infotext`)
+(defpoll CTRLCOLOR      :interval "1s" `scripts/theme.sh --ctrl`)
+
+
+(defwindow statusbar
+    :monitor 1
+    :stacking "fg"
+    :windowtype "dock"
+    :wm-ignore false
+    :geometry (geometry :width "100%"
+                        :height "48px"
+                        :y "16px")
+    (statusbar))
+
+(defwidget statusbar []
+    (box :orientation "horizontal" :class "bar" :space-evenly false :hexpand true :width "100%"
+        (box :orientation "horizontal" :class "container" :space-evenly false :halign "end" :style CONTAINERCOLOR
+            (label :class "wsindic" :halign "fill" :style WSTLA)
+            (label :class "wsindic" :halign "fill" :style WSTLB)
+            (label :class "wsindic" :halign "fill" :style WSTLC)
+            (label :class "wsindic" :halign "fill" :style WSTLD)
+            (label :class "wsindic" :halign "fill" :style WSTLE)
+        )
+        (box :orientation "horizontal" :class "container" :space-evenly false :halign "end" :style CONTAINERCOLOR
+            (label :text MSIC :class "infotext" :halign "fill" :style INFOTEXTCOLOR)
+
+            (button :onclick "scripts/music-control.sh --prev" :class "ctrl" :style CTRLCOLOR
+                (label :text "" :halign "fill"))
+            (button :onclick "scripts/music-control.sh --toggle" :class "ctrl" :style CTRLCOLOR
+                (label :text "" :halign "fill"))
+            (button :onclick "scripts/music-control.sh --next" :class "ctrl" :style CTRLCOLOR
+                (label :text "" :halign "fill"))
+
+        )
+
+        (box :orientation "horizontal" :class "container" :space-evenly false :style CONTAINERCOLOR
+            (label :text "" :class "icon-sep" :halign "fill")
+            (label :text RAM :class "infotext" :halign "fill" :style INFOTEXTCOLOR)
+            (label :text "" :class "icon-sep" :halign "fill")
+            (label :text CPU :class "infotext" :halign "fill" :style INFOTEXTCOLOR)
+            (label :text "" :class "icon-sep" :halign "fill")
+            (label :text GPU :class "infotext" :halign "fill" :style INFOTEXTCOLOR)
+        )
+
+        (box :orientation "horizontal" :class "container" :space-evenly false :halign "end" :hexpand true :style CONTAINERCOLOR
+            (label :text "" :class "icon-sep" :halign "fill")
+            (label :text GPUTEMP :class "infotext" :halign "fill" :style INFOTEXTCOLOR)
+            (label :text "" :class "icon-sep" :halign "fill")
+            (label :text CPUTEMP :class "infotext" :halign "fill" :style INFOTEXTCOLOR)
+        )
+
+        (box :orientation "horizontal" :class "container" :space-evenly false :halign "end" :style CONTAINERCOLOR
+            (button :onclick "scripts/system-control.sh --pywal" :class "checkbox"
+                (label :text "" :class "buttontext"))
+            (checkbox :onunchecked "picom -b --unredir-if-possible" :onchecked "killall picom" :class "invcheckbox")
+            (label :text "" :class "icon-sep" :halign "fill")
+            (label :text BAT :class "infotext" :halign "fill" :style INFOTEXTCOLOR)
+            (label :text "" :class "icon-sep" :halign "fill")
+            (label :text BCKL :class "infotext" :halign "fill" :style INFOTEXTCOLOR)
+            (label :text "" :class "icon-sep" :halign "fill")
+            (label :text VOL :class "infotext" :halign "fill" :style INFOTEXTCOLOR)
+            (label :text "" :class "icon-sep" :halign "fill")
+            (label :text WIFI :class "infotext" :halign "fill" :style INFOTEXTCOLOR)
+            (label :text "" :class "icon-sep" :halign "fill")
+            (label :text TIME :class "infotext" :halign "fill" :style INFOTEXTCOLOR)
+        )
+        
+        
+))

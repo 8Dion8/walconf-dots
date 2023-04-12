@@ -1,0 +1,109 @@
+@import '/home/dion/.cache/wal/colors.scss';
+
+*{
+    all: unset;
+    font-family: 'Fira Code';
+    font-weight: 700;
+}
+
+.container {
+    background-color: $background;
+    border-radius: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.infotext {
+    background-color: $color2;
+    font-size: 16px;
+    margin: 16px 0px 16px 0px;
+    padding: 0px 10px 0px 10px;
+    border-radius: 8px;
+}
+
+.wsindic {
+    font-size: 16px;
+    margin: 16px 6px 16px 6px;
+    padding: 0px 10px 0px 10px;
+    border-radius: 8px;
+    min-width: 4px;
+}
+
+.ctrl {
+    font-size: 30px;
+    padding: 6px 0px 0px 8px;
+    border-radius: 8px;
+    min-width: 4px;
+
+    &:hover {
+        transition: 200ms linear;
+    }
+}
+
+.sep {
+    font-size: 40px;
+    color: $color3;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.icon-sep {
+    font-size: 20px;
+    font-family: 'Font Awesome 6 Free Solid';
+    color: $color3;
+    margin-left: 8px;
+    margin-right: 8px;
+    padding-top: 4px;
+}
+
+.checkbox {
+    transition: 200ms linear;
+    border: 2px solid $color3;
+    margin: 16px 6px 16px 6px;
+    padding: 0px 6px 0px 6px;
+    border-radius: 8px;
+    font-size: 16px;
+    min-width: 16px;
+
+    &:checked {
+        transition: 200ms linear;
+        background-color: $color3;
+        color: $color3;
+    }
+    &:hover {
+        transition: 200ms linear;
+        background-color: $color2;
+        color: $color2;
+    }
+}
+
+.invcheckbox {
+    transition: 200ms linear;
+    border: 2px solid $color3;
+    margin: 16px 6px 16px 6px;
+    padding: 0px 6px 0px 6px;
+    border-radius: 8px;
+    font-size: 16px;
+    min-width: 16px;
+    background-color: $color3;
+    color: $color3;
+
+    &:checked {
+        transition: 200ms linear;
+        background-color: $background;
+        color: $background;
+    }
+    &:hover {
+        transition: 200ms linear;
+        background-color: $color2;
+        color: $color2;
+    }
+}
+
+.buttontext {
+    color: $color3;
+    padding-top: 2px;
+    font-size: 16px;
+}
